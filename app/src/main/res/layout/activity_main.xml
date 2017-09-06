@@ -6,156 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/bottomSheet1"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="horizontal"
-            app:layout_behavior="@string/bottom_sheet_behavior"
-            app:behavior_hideable="true">
+    <LinearLayout
+        android:id="@+id/bottomSheet1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
-            <android.support.v4.widget.NestedScrollView
-                android:layout_width="193dp"
-                android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_left"
+            android:layout_width="193dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            tools:listitem="@layout/list_item">
 
-                <RadioGroup
-                    android:id="@+id/radiogroup1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
 
-                    <RadioButton
-                        android:id="@+id/radioButton1"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:button="@null"
-                        android:text="1F"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_right"
+            android:layout_width="193dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            tools:listitem="@layout/list_item">
 
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="2F"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background"/>
+        </android.support.v7.widget.RecyclerView>
 
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="3F"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background"/>
-
-                    <RadioButton
-                        android:id="@+id/radioButton4"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="4F"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background"/>
-
-                    <RadioButton
-                        android:id="@+id/radioButton5"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="5F"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton6"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="6F"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-                </RadioGroup>
-            </android.support.v4.widget.NestedScrollView>
-
-            <android.support.v4.widget.NestedScrollView
-                android:layout_width="193dp"
-                android:layout_height="match_parent">
-
-                <RadioGroup
-                    android:id="@+id/radiogroup2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <RadioButton
-                        android:id="@+id/radioButton7"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="Area 1"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton8"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="Area 2"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton9"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="Area 3"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton10"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="Area 4"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton11"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="Area 5"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton12"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:text="Area 6"
-                        android:button="@null"
-                        android:textAlignment="center"
-                        android:background="@drawable/checkbox_background" />
-                </RadioGroup>
-            </android.support.v4.widget.NestedScrollView>
-        </LinearLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
