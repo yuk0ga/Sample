@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/bottomSheet1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:behavior_hideable="true">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="193dp"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:id="@+id/radiogroup1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/radioButton1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:button="@null"
+                        android:text="1F"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background"/>
+
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="2F"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background"/>
+
+                    <RadioButton
+                        android:id="@+id/radioButton3"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="3F"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background"/>
+
+                    <RadioButton
+                        android:id="@+id/radioButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="4F"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background"/>
+
+                    <RadioButton
+                        android:id="@+id/radioButton5"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="5F"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton6"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="6F"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+                </RadioGroup>
+            </android.support.v4.widget.NestedScrollView>
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="193dp"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:id="@+id/radiogroup2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/radioButton7"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="Area 1"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton8"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="Area 2"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton9"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="Area 3"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton10"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="Area 4"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton11"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="Area 5"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton12"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:text="Area 6"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:background="@drawable/checkbox_background" />
+                </RadioGroup>
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <Button
+            android:id="@+id/btnExpand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/btnHide"
+            android:layout_marginTop="193dp"
+            android:elevation="24dp"
+            android:text="@string/btnExpand" />
+
+        <Button
+            android:id="@+id/btnHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/btnExpand"
+            android:layout_marginEnd="13dp"
+            android:layout_marginTop="11dp"
+            android:text="@string/btnHide" />
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
