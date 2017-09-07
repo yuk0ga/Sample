@@ -16,7 +16,8 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_left"
-            android:layout_width="193dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@android:color/darker_gray"
             tools:listitem="@layout/list_item">
@@ -25,7 +26,8 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_right"
-            android:layout_width="193dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@android:color/darker_gray"
             tools:listitem="@layout/list_item">
