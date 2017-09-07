@@ -14,25 +14,19 @@
         app:behavior_hideable="true"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_left"
+        <ListView
+            android:id="@+id/listView1"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"
-            tools:listitem="@layout/list_item">
+            android:layout_weight="1">
+        </ListView>
 
-        </android.support.v7.widget.RecyclerView>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_right"
+        <ListView
+            android:id="@+id/listView2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"
-            tools:listitem="@layout/list_item">
-
-        </android.support.v7.widget.RecyclerView>
+            android:layout_weight="1">
+        </ListView>
 
     </LinearLayout>
 

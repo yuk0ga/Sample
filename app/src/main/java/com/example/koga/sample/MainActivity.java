@@ -10,51 +10,55 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView mRecyclerView1;
-    private RecyclerView.Adapter mAdapter1;
-    private RecyclerView.LayoutManager mLayoutManager1;
-
-    private String[] myDataset1 = new String[20];
-
-    private RecyclerView mRecyclerView2;
-    private RecyclerView.Adapter mAdapter2;
-    private RecyclerView.LayoutManager mLayoutManager2;
-
-    private String[] myDataset2 = new String[20];
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView1 = (RecyclerView)(findViewById(R.id.recycler_view_left));
-        mRecyclerView1.setHasFixedSize(true);
-        mLayoutManager1 = new LinearLayoutManager(this);
-        mRecyclerView1.setLayoutManager(mLayoutManager1);
-        for(int i=0; i<myDataset1.length; i++) {
-            myDataset1[i] = "Data_0"+String.valueOf(i);
-        }
-        mAdapter1 = new MyAdapter1(myDataset1);
-        mRecyclerView1.setAdapter(mAdapter1);
+        // Create a floor list
+        ArrayList<String> floorList = new ArrayList<String>();
 
+        // Put data in the list
+        floorList.add("1F");
+        floorList.add("2F");
+        floorList.add("3F");
+        floorList.add("4F");
+        floorList.add("5F");
+        floorList.add("6F");
 
-        mRecyclerView2 = (RecyclerView)(findViewById(R.id.recycler_view_right));
-        mRecyclerView2.setHasFixedSize(true);
-        mLayoutManager2 = new LinearLayoutManager(this);
-        mRecyclerView2.setLayoutManager(mLayoutManager2);
-        for(int i=0; i<myDataset2.length; i++) {
-            myDataset2[i] = "Data_0"+String.valueOf(i);
-        }
-        mAdapter2 = new MyAdapter2(myDataset2);
-        mRecyclerView2.setAdapter(mAdapter2);
+        // Create an adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, floorList);
 
+        // Link Adapter to ListView
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        listView.setAdapter(adapter);
 
+        // Create an area list
+        ArrayList<String> areaList = new ArrayList<String>();
+
+        // Put data in the list
+        areaList.add("エリアA");
+        areaList.add("エリアB");
+        areaList.add("エリアC");
+        areaList.add("エリアD");
+        areaList.add("エリアE");
+        areaList.add("エリアF");
+
+        // Create an adapter
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.list_item, areaList);
+
+        // Link Adapter to ListView
+        ListView listView2 = (ListView) findViewById(R.id.listView2);
+        listView2.setAdapter(adapter2);
 
 
         View bottomSheet = findViewById(R.id.bottomSheet1);
@@ -74,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case BottomSheetBehavior.STATE_HIDDEN:
                         break;
+                }
+
+                // prevent user from dragging down the bottom sheet
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 }
             }
 
