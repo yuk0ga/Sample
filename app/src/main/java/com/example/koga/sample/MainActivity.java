@@ -1,29 +1,18 @@
 package com.example.koga.sample;
 
-import android.graphics.Color;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.concurrent.RejectedExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView1;
-    private RecyclerView.Adapter mAdapter1;
-    private RecyclerView.LayoutManager mLayoutManager1;
 
 
     private RecyclerView mRecyclerView2;
@@ -40,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //Instantiate RecyclerView
         RecyclerView floorRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_left));
 
-        //set layout manager
+        //create & set layout manager
         floorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         floorRecyclerView.setHasFixedSize(true);
 
@@ -55,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         floorList.add("5F");
         floorList.add("6F");
 
-        //create an adapter
-        
+        //set an adapter
+        RecyclerView.Adapter floorAdapter = new FloorAdapter(floorList);
+        floorRecyclerView.setAdapter(floorAdapter);
 
 
 
@@ -69,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i<myDataset2.length; i++) {
             myDataset2[i] = "Data_0"+String.valueOf(i);
         }
-        mAdapter2 = new MyAdapter2(myDataset2);
+        mAdapter2 = new AreaAdapter(myDataset2);
         mRecyclerView2.setAdapter(mAdapter2);
 
 

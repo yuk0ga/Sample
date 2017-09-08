@@ -6,13 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by koga on 2017/09/06.
  */
 
-public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
+public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> {
 
-    private String[] mDataset = new String[20];
+    private ArrayList<String> floorDataset = new ArrayList<>();
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView;
@@ -23,8 +25,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
         }
     }
 
-    public MyAdapter2(String[] myDataset2){
-        mDataset = myDataset2;
+    public FloorAdapter(ArrayList<String> floorList){
+        floorDataset = floorList;
     }
 
     @Override
@@ -45,12 +47,15 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        holder.mTextView.setText(floorDataset.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return floorDataset.size();
     }
 }
+
+
+

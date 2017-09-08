@@ -10,7 +10,7 @@ import android.widget.TextView;
  * Created by koga on 2017/09/06.
  */
 
-public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.ViewHolder> {
+public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
 
     private String[] mDataset = new String[20];
 
@@ -23,8 +23,8 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.ViewHolder> {
         }
     }
 
-    public MyAdapter1(String[] myDataset1){
-        mDataset = myDataset1;
+    public AreaAdapter(String[] myDataset2){
+        mDataset = myDataset2;
     }
 
     @Override
@@ -54,6 +54,3 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.ViewHolder> {
         return mDataset.length;
     }
 }
-
-
-
