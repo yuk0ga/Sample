@@ -10,9 +10,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.concurrent.RejectedExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter1;
     private RecyclerView.LayoutManager mLayoutManager1;
 
-    private String[] myDataset1 = new String[20];
 
     private RecyclerView mRecyclerView2;
     private RecyclerView.Adapter mAdapter2;
@@ -33,15 +37,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView1 = (RecyclerView)(findViewById(R.id.recycler_view_left));
-        mRecyclerView1.setHasFixedSize(true);
-        mLayoutManager1 = new LinearLayoutManager(this);
-        mRecyclerView1.setLayoutManager(mLayoutManager1);
-        for(int i=0; i<myDataset1.length; i++) {
-            myDataset1[i] = "Data_0"+String.valueOf(i);
-        }
-        mAdapter1 = new MyAdapter1(myDataset1);
-        mRecyclerView1.setAdapter(mAdapter1);
+        //Instantiate RecyclerView
+        RecyclerView floorRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_left));
+
+        //set layout manager
+        floorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        floorRecyclerView.setHasFixedSize(true);
+
+        //Create a floor list
+        ArrayList<String> floorList = new ArrayList<String>();
+
+        // Put data in the list
+        floorList.add("1F");
+        floorList.add("2F");
+        floorList.add("3F");
+        floorList.add("4F");
+        floorList.add("5F");
+        floorList.add("6F");
+
+        //create an adapter
+        
+
+
+
 
 
         mRecyclerView2 = (RecyclerView)(findViewById(R.id.recycler_view_right));
@@ -74,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case BottomSheetBehavior.STATE_HIDDEN:
                         break;
+                }
+
+                // prevent user from dragging down the bottom sheet
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 }
             }
 
