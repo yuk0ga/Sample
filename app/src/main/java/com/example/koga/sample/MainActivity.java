@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         floorRecyclerView.setHasFixedSize(true);
 
         //Create a floor list
-        ArrayList<String> floorList = new ArrayList<String>();
+        ArrayList<String> floorList = new ArrayList<>();
 
         // Put data in the list
         floorList.add("1F");
@@ -50,18 +50,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //same thing as above but for Area
+        RecyclerView areaRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_right));
 
+        areaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        mRecyclerView2 = (RecyclerView)(findViewById(R.id.recycler_view_right));
-        mRecyclerView2.setHasFixedSize(true);
-        mLayoutManager2 = new LinearLayoutManager(this);
-        mRecyclerView2.setLayoutManager(mLayoutManager2);
-        for(int i=0; i<myDataset2.length; i++) {
-            myDataset2[i] = "Data_0"+String.valueOf(i);
-        }
-        mAdapter2 = new AreaAdapter(myDataset2);
-        mRecyclerView2.setAdapter(mAdapter2);
+        ArrayList<String> areaList = new ArrayList<>();
+        areaList.add("Aエリア");
+        areaList.add("Bエリア");
+        areaList.add("Cエリア");
+        areaList.add("Dエリア");
+        areaList.add("Eエリア");
 
+        RecyclerView.Adapter areaAdapter = new AreaAdapter(areaList);
+        areaRecyclerView.setAdapter(areaAdapter);
 
 
 
