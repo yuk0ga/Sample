@@ -13,14 +13,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+//    public ListControl listControl = new ListControl();
 
-
-    private RecyclerView mRecyclerView2;
-    private RecyclerView.Adapter mAdapter2;
-    private RecyclerView.LayoutManager mLayoutManager2;
-
-    private String[] myDataset2 = new String[20];
-
+    ArrayList<String> areaList1;
+    ArrayList<String> areaList2;
+    ArrayList<String> areaList3;
+    ArrayList<String> areaList4;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,21 +47,40 @@ public class MainActivity extends AppCompatActivity {
         floorRecyclerView.setAdapter(floorAdapter);
 
 
+        AreaSetter areaSetter = new AreaSetter();
+        areaSetter.getFloor();
 
         //same thing as above but for Area
         RecyclerView areaRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_right));
 
         areaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        ArrayList<String> areaList = new ArrayList<>();
-        areaList.add("Aエリア");
-        areaList.add("Bエリア");
-        areaList.add("Cエリア");
-        areaList.add("Dエリア");
-        areaList.add("Eエリア");
+        areaList1 = new ArrayList<>();
+        areaList1.add("Aエリア");
+        areaList1.add("Bエリア");
+        areaList1.add("Cエリア");
+        areaList1.add("Dエリア");
+        areaList1.add("Eエリア");
 
-        RecyclerView.Adapter areaAdapter = new AreaAdapter(areaList);
+        RecyclerView.Adapter areaAdapter = new AreaAdapter(areaSetter.area);
         areaRecyclerView.setAdapter(areaAdapter);
+
+        //bunch of area lists for different floors
+        areaList2 = new ArrayList<>();
+        areaList2.add("Aエリア");
+        areaList2.add("Bエリア");
+
+        areaList3 = new ArrayList<>();
+        areaList3.add("Aエリア");
+        areaList3.add("Bエリア");
+        areaList3.add("Cエリア");
+
+        areaList4 = new ArrayList<>();
+        areaList4.add("Aエリア");
+        areaList4.add("Bエリア");
+        areaList4.add("Cエリア");
+        areaList4.add("Dエリア");
+
 
 
 

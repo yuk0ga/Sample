@@ -22,6 +22,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
         public ViewHolder(View v){
             super(v);
             mTextView = (TextView)(v.findViewById(R.id.list_item_text));
+            v.setClickable(true);
         }
     }
 

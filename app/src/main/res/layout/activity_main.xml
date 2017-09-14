@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="mainActivity" type="com.example.koga.sample.MainActivity"/>
+    </data>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -63,4 +67,4 @@
 
 
 </android.support.design.widget.CoordinatorLayout>
-
+</layout>
