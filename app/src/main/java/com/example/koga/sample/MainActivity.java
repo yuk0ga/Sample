@@ -1,5 +1,6 @@
 package com.example.koga.sample;
 
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.koga.sample.databinding.ActivityMainBinding;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-//    public ListControl listControl = new ListControl();
-
+    ArrayList<String> floorList;
     ArrayList<String> areaList1;
     ArrayList<String> areaList2;
     ArrayList<String> areaList3;
@@ -22,17 +24,24 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
 
-        //Instantiate RecyclerView
-        RecyclerView floorRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_left));
+        //After DataBinding
+        ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        //create & set layout manager
-        floorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        floorRecyclerView.setHasFixedSize(true);
+        mainBinding.recyclerViewLeft.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.Adapter floorAdapter = new FloorAdapter(floorList);
+        mainBinding.recyclerViewLeft.setAdapter(floorAdapter);
+
+        //(Before DataBinding) Instantiate RecyclerView
+//        RecyclerView floorRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_left));
+
+        //(Before DataBinding) create & set layout manager
+//        floorRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        floorRecyclerView.setHasFixedSize(true);
 
         //Create a floor list
-        ArrayList<String> floorList = new ArrayList<>();
+        floorList = new ArrayList<>();
 
         // Put data in the list
         floorList.add("1F");
@@ -42,18 +51,23 @@ public class MainActivity extends AppCompatActivity {
         floorList.add("5F");
         floorList.add("6F");
 
-        //set an adapter
-        RecyclerView.Adapter floorAdapter = new FloorAdapter(floorList);
-        floorRecyclerView.setAdapter(floorAdapter);
+        //(Before DataBinding) set an adapter
+//        RecyclerView.Adapter floorAdapter = new FloorAdapter(floorList);
+//        floorRecyclerView.setAdapter(floorAdapter);
 
-
+        //たぶんここじゃなくてAdapterにいれるべきかな？？ClickListenerと合わせて。
         AreaSetter areaSetter = new AreaSetter();
         areaSetter.getFloor();
 
-        //same thing as above but for Area
-        RecyclerView areaRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_right));
+        //After DataBinding
+        mainBinding.recyclerViewRight.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.Adapter areaAdapter = new AreaAdapter(areaSetter.area);
+        mainBinding.recyclerViewRight.setAdapter(areaAdapter);
 
-        areaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        //(Before DataBinding) same thing as above but for Area
+//        RecyclerView areaRecyclerView = (RecyclerView)(findViewById(R.id.recycler_view_right));
+//
+//        areaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         areaList1 = new ArrayList<>();
         areaList1.add("Aエリア");
@@ -62,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
         areaList1.add("Dエリア");
         areaList1.add("Eエリア");
 
-        RecyclerView.Adapter areaAdapter = new AreaAdapter(areaSetter.area);
-        areaRecyclerView.setAdapter(areaAdapter);
+//        RecyclerView.Adapter areaAdapter = new AreaAdapter(areaSetter.area);
+//        areaRecyclerView.setAdapter(areaAdapter);
 
         //bunch of area lists for different floors
         areaList2 = new ArrayList<>();

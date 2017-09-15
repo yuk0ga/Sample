@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.example.koga.sample.databinding.ListItemBinding;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
         //tells that all views are going to be a string.
         public ViewHolder(View v){
             super(v);
-            mTextView = (TextView)(v.findViewById(R.id.list_item_text));
+            mTextView = (TextView)(v.findViewById(R.id.list_item_floor));
             v.setClickable(true);
         }
     }
@@ -42,41 +44,23 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
 
     @Override //create new views. called when recyclerview needs a new view holder.
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        //DataBinding
+        ListItemBinding binding = ListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewHolder(binding.getRoot());
         // create a new view
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+//        View view = LayoutInflater.from(parent.getContext())
+//                .inflate(R.layout.list_item, parent, false);
 
-        // set the view's size, margins, paddings and layout parameters
-
-
-//        view.setOnClickListener(this);
-
-        ViewHolder vh = new ViewHolder(view);
-        return vh;
+//        ViewHolder vh = new ViewHolder(view);
+//        return vh;
     }
-
-    public void setOnItemClickListener(AdapterView.OnItemClickListener listener){
-        floorListener = listener;
-    }
-
-//    @Override
-//    public void onClick(View view){
-//        if(floorRecycler == null){
-//            return;
-//        }
-//
-//        if(floorListener != null){
-//            int position = floorRecycler.getChildAdapterPosition(view);
-//            Item item = floorDataset.get(position);
-//            floorListener.onItemClick(this, position, item);
-//        }
-//    }
-
 
     @Override  // Replace the contents of a view (invoked by the layout manager)
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+
         holder.mTextView.setText(floorDataset.get(position));
     }
 
@@ -85,7 +69,13 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
     public int getItemCount() {
         return floorDataset.size();
     }
+
+    public void onButtonClick() {
+
+    }
 }
+
+
 
 
 
