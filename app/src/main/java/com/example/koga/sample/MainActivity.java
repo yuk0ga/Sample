@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,14 +12,27 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import butterknife.OnItemClick;
+
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<String> floorList;
+    ArrayList<String> areaList;
+
+    ListView listView;
+    ListView listView2;
+
+    ArrayAdapter<String> adapter;
+    ArrayAdapter<String> adapter2;
+    ArrayAdapter<String> adapter3;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Create a floor list
-        ArrayList<String> floorList = new ArrayList<>();
+        floorList = new ArrayList<>();
 
         // Put data in the list
         floorList.add("1F");
@@ -29,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
         floorList.add("6F");
 
         // Create an adapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, floorList);
+        adapter = new ArrayAdapter<>(this, R.layout.list_item, floorList);
 
         // Link Adapter to ListView
-        ListView listView = (ListView) findViewById(R.id.listView1);
+        listView = (ListView) findViewById(R.id.listView1);
         listView.setAdapter(adapter);
 
         // Create an area list
-        ArrayList<String> areaList = new ArrayList<>();
+        areaList = new ArrayList<>();
 
         // Put data in the list
         areaList.add("エリアA");
@@ -46,12 +60,24 @@ public class MainActivity extends AppCompatActivity {
         areaList.add("エリアE");
         areaList.add("エリアF");
 
+        // Create an area list
+        ArrayList<String> areaList2 = new ArrayList<>();
+
+        // Put data in the list
+        areaList2.add("エリアA");
+        areaList2.add("エリアB");
+        areaList2.add("エリアC");
+
+
         // Create an adapter
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.list_item, areaList);
+        adapter2 = new ArrayAdapter<>(this, R.layout.list_item, areaList);
+        adapter3 = new ArrayAdapter<>(this, R.layout.list_item, areaList2);
 
         // Link Adapter to ListView
-        ListView listView2 = (ListView) findViewById(R.id.listView2);
+        listView2 = (ListView) findViewById(R.id.listView2);
         listView2.setAdapter(adapter2);
+
+//        onListItemClick(listView.getPositionForView(listView));
 
 
         View bottomSheet = findViewById(R.id.bottomSheet1);
@@ -101,5 +127,16 @@ public class MainActivity extends AppCompatActivity {
                 behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
             }
         });
+    }
+
+    @OnItemClick(R.id.listView1)
+    public void onListItemClick(int position) {
+//        if (position != 1){
+//            areaList.add("エリアX");
+//            areaList.add("エリアY");
+//            areaList.add("エリアZ");
+//            adapter2.notifyDataSetChanged();
+//        }
+        Log.v("ListView", "selected pos=" + position);
     }
 }
