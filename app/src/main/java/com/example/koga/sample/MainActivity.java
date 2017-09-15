@@ -1,20 +1,13 @@
 package com.example.koga.sample;
 
-import android.graphics.Color;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 
@@ -25,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Create a floor list
-        ArrayList<String> floorList = new ArrayList<String>();
+        ArrayList<String> floorList = new ArrayList<>();
 
         // Put data in the list
         floorList.add("1F");
@@ -36,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
         floorList.add("6F");
 
         // Create an adapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, floorList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, floorList);
 
         // Link Adapter to ListView
         ListView listView = (ListView) findViewById(R.id.listView1);
         listView.setAdapter(adapter);
 
         // Create an area list
-        ArrayList<String> areaList = new ArrayList<String>();
+        ArrayList<String> areaList = new ArrayList<>();
 
         // Put data in the list
         areaList.add("エリアA");
@@ -54,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         areaList.add("エリアF");
 
         // Create an adapter
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.list_item, areaList);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.list_item, areaList);
 
         // Link Adapter to ListView
         ListView listView2 = (ListView) findViewById(R.id.listView2);
