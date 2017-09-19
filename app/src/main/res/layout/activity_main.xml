@@ -14,20 +14,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/btnHide"
+            android:layout_alignStart="@+id/btnDone"
             android:layout_marginTop="193dp"
             android:elevation="24dp"
             android:text="@string/btnExpand" />
 
         <Button
-            android:id="@+id/btnHide"
+            android:id="@+id/btnDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/btnExpand"
             android:layout_marginEnd="13dp"
             android:layout_marginTop="11dp"
-            android:text="@string/btnHide" />
+            android:text="@string/btnDone" />
     </RelativeLayout>
 
     <LinearLayout

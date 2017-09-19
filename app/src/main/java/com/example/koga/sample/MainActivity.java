@@ -2,6 +2,7 @@ package com.example.koga.sample;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,11 +32,14 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> areaAdapter5;
     ArrayAdapter<String> areaAdapter6;
 
+    int floor;
+    String area;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        ButterKnife.bind(this);                     //NEVER FORGET!!! NEVER!!!!!!!! (when using butterknife)
 
 
         // Create a floor list
@@ -138,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button btnExpand = (Button)(findViewById(R.id.btnExpand));
-        Button btnHide = (Button)(findViewById(R.id.btnHide));
+//        Button btnHide = (Button)(findViewById(R.id.btnHide));
 
         btnExpand.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,39 +152,82 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnHide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-            }
-        });
+//        btnHide.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+//            }
+//        });
     }
 
     @OnItemClick(R.id.listView1)
-    public void onListItemClick(int position) {
-//        if (position == 1){
-//            listView2.setAdapter(areaAdapter2);
-//        }
+    public void onFloorItemClick(int position) {
+
         switch (position) {
             case 0:
                 listView2.setAdapter(areaAdapter);
+                floor = position+1;
                 break;
             case 1:
                 listView2.setAdapter(areaAdapter2);
+                floor = position+1;
                 break;
             case 2:
                 listView2.setAdapter(areaAdapter3);
+                floor = position+1;
                 break;
             case 3:
                 listView2.setAdapter(areaAdapter4);
+                floor = position+1;
                 break;
             case 4:
                 listView2.setAdapter(areaAdapter5);
+                floor = position+1;
                 break;
             case 5:
                 listView2.setAdapter(areaAdapter6);
+                floor = position+1;
                 break;
         }
-        Log.v("ListView", "selected pos=" + position);
+    }
+
+    @OnItemClick(R.id.listView2)
+    public void onAreaItemClick(int position) {
+
+        switch (position) {
+            case 0:
+                Log.v("SELECTED AREA", "Area A");
+                area = "A";
+                break;
+            case 1:
+                Log.v("SELECTED AREA", "Area B");
+                area = "B";
+                break;
+            case 2:
+                Log.v("SELECTED AREA", "Area C");
+                area = "C";
+                break;
+            case 3:
+                Log.v("SELECTED AREA", "Area D");
+                area = "D";
+                break;
+            case 4:
+                Log.v("SELECTED AREA", "Area E");
+                area = "E";
+                break;
+            case 5:
+                Log.v("SELECTED AREA", "Area F");
+                area = "F";
+                break;
+        }
+    }
+
+    @OnClick(R.id.btnDone)
+    public void onDoneClick(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("位置確認");
+        builder.setMessage("駐車位置は " + floor + "階 エリア" + area + " でよろしいですか？");
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
