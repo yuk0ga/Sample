@@ -1,5 +1,6 @@
 package com.example.koga.sample;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AlertDialog;
@@ -10,9 +11,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
@@ -34,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
     int floor;
     String area;
+
+    @BindView(R.id.parkedArea)
+    TextView parkedArea;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,6 +233,13 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("位置確認");
         builder.setMessage("駐車位置は " + floor + "階 エリア" + area + " でよろしいですか？");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //駐車位置更新&表示
+                parkedArea.setText("駐車位置: " + floor + "階 エリア" + area);
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }

@@ -28,6 +28,14 @@
             android:layout_marginEnd="13dp"
             android:layout_marginTop="11dp"
             android:text="@string/btnDone" />
+
+        <TextView
+            android:id="@+id/parkedArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="69dp"/>
     </RelativeLayout>
 
     <LinearLayout
