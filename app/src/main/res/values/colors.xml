@@ -3,6 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="checkbox_active">#00ced1</color>
-    <color name="checkbox_inactive">#aaaaaa</color>
+    <color name="area_active">#c1c1c1</color>
+    <color name="area_inactive">#dfdfdf</color>
+    <color name="floor_active">#dfdfdf</color>
+    <color name="floor_inactive">#f4f4f4</color>
 </resources>

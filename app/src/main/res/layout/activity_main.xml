@@ -83,14 +83,19 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scrollbars="none" />
+            android:scrollbars="none"
+            android:choiceMode="singleChoice"
+            android:listSelector="@drawable/floor_background"/>
 
         <ListView
             android:id="@+id/listView2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scrollbars="none"/>
+            android:scrollbars="none"
+            android:choiceMode="singleChoice"
+            android:background="@color/area_inactive"
+            android:listSelector="@drawable/area_background"/>
 
     </LinearLayout>
 
