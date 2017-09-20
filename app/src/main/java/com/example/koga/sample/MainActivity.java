@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     int floor;
     String area;
 
-    @BindView(R.id.parkedArea)
+    @BindView(R.id.parkedArea)  //駐車位置
     TextView parkedArea;
 
     @BindView(R.id.bottomSheet1)
@@ -215,6 +212,8 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnReset)
     public void onResetClick(View v) {
         parkedArea.setText(undefined);
+        floor = 0;
+        area = null;
     }
 
     @OnItemClick(R.id.listView1)
@@ -281,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnDone)
     public void onDoneClick(View view) {
+        if (floor != 0 && area != null) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("位置確認");
         builder.setMessage("駐車位置は " + floor + "階 エリア" + area + " でよろしいですか？");
@@ -294,5 +294,13 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Cancel", null);
         AlertDialog dialog = builder.create();
         dialog.show();
+        } else {
+            final AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+            builder2.setTitle("エラー");
+            builder2.setMessage("駐車位置が選択されていません。");
+            builder2.setPositiveButton("OK", null);
+            AlertDialog dialog = builder2.create();
+            dialog.show();
+        }
     }
 }
