@@ -9,25 +9,38 @@
         android:layout_width="match_parent"
         android:layout_height="300dp">
 
-        <Button
-            android:id="@+id/btnExpand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/btnDone"
-            android:layout_marginTop="193dp"
-            android:elevation="24dp"
-            android:text="@string/btnExpand" />
-
-        <Button
-            android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="107dp"
+            android:layout_height="309dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/parkedArea"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/btnExpand"
-            android:layout_marginEnd="13dp"
-            android:layout_marginTop="11dp"
-            android:text="@string/btnDone" />
+            android:layout_marginTop="11dp">
+
+            <Button
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnDone" />
+
+            <Button
+                android:id="@+id/btnExpand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnExpand" />
+
+            <Button
+                android:id="@+id/btnHide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnHide"/>
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnReset"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/parkedArea"
@@ -37,6 +50,25 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="69dp"/>
     </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottomSheet2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+        <ImageView
+            android:id="@+id/btnEdit"
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_margin="50dp"
+            app:srcCompat="@drawable/ic_car_orange">
+
+        </ImageView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bottomSheet1"
@@ -61,7 +93,6 @@
             android:scrollbars="none"/>
 
     </LinearLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>
 

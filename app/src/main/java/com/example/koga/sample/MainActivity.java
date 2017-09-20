@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,12 +43,24 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.parkedArea)
     TextView parkedArea;
 
+    @BindView(R.id.bottomSheet1)
+    View bottomSheet;
+
+    @BindView(R.id.bottomSheet2)
+    View bottomSheet2;
+
+    private BottomSheetBehavior behavior;
+    private BottomSheetBehavior behavior2;
+
+    String undefined = "駐車位置: 未設定";
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);                     //NEVER FORGET!!! NEVER!!!!!!!! (when using butterknife)
 
+        parkedArea.setText(undefined);
 
         // Create a floor list
         floorList = new ArrayList<>();
@@ -117,8 +131,38 @@ public class MainActivity extends AppCompatActivity {
 //        onListItemClick(listView.getPositionForView(listView));
 
 
-        View bottomSheet = findViewById(R.id.bottomSheet1);
-        final BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+        behavior2 = BottomSheetBehavior.from(bottomSheet2);
+        behavior2.setState(BottomSheetBehavior.STATE_HIDDEN);
+        behavior2.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch(newState){
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        break;
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        break;
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        break;
+                }
+
+                // prevent user from dragging down the bottom sheet
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    behavior2.setState(BottomSheetBehavior.STATE_EXPANDED);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
+
+
+        behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -147,23 +191,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-        Button btnExpand = (Button)(findViewById(R.id.btnExpand));
-//        Button btnHide = (Button)(findViewById(R.id.btnHide));
+    @OnClick(R.id.btnExpand)
+    public void onExpandClick(View v) {
+        if (behavior.getState()==BottomSheetBehavior.STATE_HIDDEN){
+            behavior2.setState(BottomSheetBehavior.STATE_EXPANDED);
+        }
+    }
 
-        btnExpand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
-        });
+    @OnClick(R.id.btnEdit)
+    public void onEditClick(View v) {
+        behavior2.setState(BottomSheetBehavior.STATE_HIDDEN);
+        behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
 
-//        btnHide.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-//            }
-//        });
+    @OnClick(R.id.btnHide)
+    public void onHideClick(View v) {
+        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        behavior2.setState(BottomSheetBehavior.STATE_HIDDEN);
+    }
+
+    @OnClick(R.id.btnReset)
+    public void onResetClick(View v) {
+        parkedArea.setText(undefined);
     }
 
     @OnItemClick(R.id.listView1)
@@ -230,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnDone)
     public void onDoneClick(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("位置確認");
         builder.setMessage("駐車位置は " + floor + "階 エリア" + area + " でよろしいですか？");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -240,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
                 parkedArea.setText("駐車位置: " + floor + "階 エリア" + area);
             }
         });
+        builder.setNegativeButton("Cancel", null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
