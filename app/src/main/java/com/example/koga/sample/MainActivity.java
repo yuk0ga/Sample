@@ -214,6 +214,9 @@ public class MainActivity extends AppCompatActivity {
         parkedArea.setText(undefined);
         floor = 0;
         area = null;
+        //Reset Selection
+        listView.setAdapter(floorAdapter);
+        listView2.setAdapter(areaAdapter);
     }
 
     @OnItemClick(R.id.listView1)
@@ -289,6 +292,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 //駐車位置更新&表示
                 parkedArea.setText("駐車位置: " + floor + "階 エリア" + area);
+                //Reset Selection
+                listView.setAdapter(floorAdapter);
+                listView2.setAdapter(areaAdapter);
             }
         });
         builder.setNegativeButton("Cancel", null);
