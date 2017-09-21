@@ -297,7 +297,14 @@ public class MainActivity extends AppCompatActivity {
                 listView2.setAdapter(areaAdapter);
             }
         });
-        builder.setNegativeButton("Cancel", null);
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Reset Selection
+                listView.setAdapter(floorAdapter);
+                listView2.setAdapter(areaAdapter);
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
         } else {
